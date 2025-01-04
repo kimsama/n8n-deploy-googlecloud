@@ -155,6 +155,7 @@ Feel free to open issues or submit pull requests for improvements.
 
 ### References
 - [n8n Installation on Google Cloud Platform Guide](https://www.youtube.com/watch?v=kdt5J2bpchM&t=6s)
+- [Hosting on Render.com](https://www.youtube.com/watch?v=7G9KX2uA8H8)
 
 ## License
 
