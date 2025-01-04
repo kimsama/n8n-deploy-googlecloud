@@ -59,6 +59,24 @@ Your n8n data will be persisted in a Docker volume named `n8n_data`.
 - Runs n8n with proper volume mounting
 - Provides access information
 
+## Additional Operations
+
+### Rerunning n8n
+After stopping n8n with Ctrl + C, you can restart it with the following command (note the added -d flag for detached mode):
+
+```bash
+sudo docker run -it --rm --name n8n -p 5678:5678 -e WEBHOOK_URL="https://???" -v n8n_data:/home/node/.n8n -d docker.n8n.io/n8nio/n8n
+```
+
+### Updating n8n to the Latest Version
+To update n8n to the latest version:
+1. Stop the current instance with Ctrl + C
+2. Run the following command which includes the --pull="always" flag to ensure the latest image is used:
+
+```bash
+sudo docker run -it --rm --name n8n -p 5678:5678 -e WEBHOOK_URL="https://???" -v n8n_data:/home/node/.n8n -d --pull="always" docker.n8n.io/n8nio/n8n
+```
+
 ## Troubleshooting
 
 If you encounter Docker permission issues:
