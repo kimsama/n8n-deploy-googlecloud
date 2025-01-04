@@ -55,6 +55,13 @@ n8n will be available at:
 
 Your n8n data will be persisted in a Docker volume named `n8n_data`.
 
+### Environment Variables
+
+The scripts include the following environment variables:
+
+- `N8N_SECURE_COOKIE`: Set to `false` in insecure mode for development
+- `N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS`: Set to `true` to automatically enforce correct file permissions
+
 ## Script Details
 
 ### install-docker.sh
@@ -117,7 +124,7 @@ docker logs --tail 100 n8n
 After stopping n8n with `Ctrl+C`, you can restart it with the following command (note the added -d flag for detached mode):
 
 ```bash
-sudo docker run -it --rm --name n8n -p 5678:5678 -e WEBHOOK_URL="https://???" -v n8n_data:/home/node/.n8n -d docker.n8n.io/n8nio/n8n
+sudo docker run -it --rm --name n8n -p 5678:5678 -e WEBHOOK_URL="https://???" -v n8n_data:/home/node/.n8n -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true -d docker.n8n.io/n8nio/n8n
 ```
 
 ### Updating n8n to the Latest Version
@@ -126,7 +133,7 @@ To update n8n to the latest version:
 2. Run the following command which includes the --pull="always" flag to ensure the latest image is used:
 
 ```bash
-sudo docker run -it --rm --name n8n -p 5678:5678 -e WEBHOOK_URL="https://???" -v n8n_data:/home/node/.n8n -d --pull="always" docker.n8n.io/n8nio/n8n
+sudo docker run -it --rm --name n8n -p 5678:5678 -e WEBHOOK_URL="https://???" -v n8n_data:/home/node/.n8n -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true -d --pull="always" docker.n8n.io/n8nio/n8n
 ```
 
 ## Troubleshooting
