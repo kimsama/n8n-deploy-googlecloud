@@ -55,6 +55,37 @@ n8n will be available at:
 
 Your n8n data will be persisted in a Docker volume named `n8n_data`.
 
+### 3. Setup Dynamic DNS with ddclient
+
+If you need to keep your domain pointed to your VM's dynamic IP address, you can use ddclient:
+
+1. Install ddclient:
+```bash
+sudo apt-get update
+sudo apt-get install ddclient
+```
+
+2. Copy the configuration file:
+```bash
+sudo cp ddclient/ddclient.conf /etc/ddclient/ddclient.conf
+```
+
+3. Update the configuration with your credentials:
+```bash
+sudo nano /etc/ddclient/ddclient.conf
+```
+
+4. Start ddclient service:
+```bash
+sudo systemctl start ddclient
+sudo systemctl enable ddclient
+```
+
+5. Check status:
+```bash
+sudo systemctl status ddclient
+```
+
 ### Environment Variables
 
 The scripts include the following environment variables:
@@ -81,6 +112,11 @@ The scripts include the following environment variables:
 - Similar to run-n8n.sh but runs n8n with insecure cookies
 - Useful for development or testing environments
 - Not recommended for production use
+
+### ddclient.conf
+- Configuration for dynamic DNS updates
+- Updates domain IP address automatically
+- Runs as a daemon every 5 minutes
 
 ## Additional Operations
 
