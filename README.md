@@ -12,7 +12,7 @@ This repository contains scripts and instructions for deploying n8n on Google Cl
 
 ### 1. Install Docker
 
-First, install Docker on your VM instance using the provided script:
+First, install Docker on your VM instance using the provided script ([install-docker.sh](sh/install-docker.sh)):
 
 ```bash
 chmod +x sh/install-docker.sh
@@ -32,7 +32,7 @@ docker --version
 
 ### 2. Install and Run n8n
 
-Install and run n8n using the provided script:
+Install and run n8n using the provided script ([run-n8n.sh](sh/run-n8n.sh)):
 
 ```bash
 chmod +x sh/run-n8n.sh
