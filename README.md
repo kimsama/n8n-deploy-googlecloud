@@ -61,6 +61,22 @@ Your n8n data will be persisted in a Docker volume named `n8n_data`.
 
 ## Additional Operations
 
+### Checking n8n Container Status
+To check if n8n is currently running:
+
+```bash
+# List all running containers
+docker ps
+
+# Or specifically filter for n8n
+docker ps | grep n8n
+```
+
+To see all containers (including stopped ones):
+```bash
+docker ps -a | grep n8n
+```
+
 ### Rerunning n8n
 After stopping n8n with `Ctrl+C`, you can restart it with the following command (note the added -d flag for detached mode):
 
