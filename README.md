@@ -32,11 +32,22 @@ docker --version
 
 ### 2. Install and Run n8n
 
-Install and run n8n using the provided script ([run-n8n.sh](sh/run-n8n.sh)):
+You have two options to run n8n:
+
+#### Option 1: Standard Setup
+Install and run n8n using the standard script ([run-n8n.sh](sh/run-n8n.sh)):
 
 ```bash
 chmod +x sh/run-n8n.sh
 ./sh/run-n8n.sh
+```
+
+#### Option 2: Setup with Insecure Cookies
+If you need to run n8n with insecure cookies (e.g., for development or testing), use this script ([run-n8n-insecure.sh](sh/run-n8n-insecure.sh)):
+
+```bash
+chmod +x sh/run-n8n-insecure.sh
+./sh/run-n8n-insecure.sh
 ```
 
 n8n will be available at:
@@ -58,6 +69,11 @@ Your n8n data will be persisted in a Docker volume named `n8n_data`.
 - Pulls the latest n8n image
 - Runs n8n with proper volume mounting
 - Provides access information
+
+### run-n8n-insecure.sh
+- Similar to run-n8n.sh but runs n8n with insecure cookies
+- Useful for development or testing environments
+- Not recommended for production use
 
 ## Additional Operations
 
