@@ -3,7 +3,7 @@
 # Exit on any error
 set -e
 
-echo "Starting n8n with insecure cookies..."
+echo "Starting n8n with insecure cookies in detached mode..."
 
 # Check if Docker is running
 if ! docker info >/dev/null 2>&1; then
@@ -18,15 +18,20 @@ if netstat -tuln | grep -q ":5678 "; then
     exit 1
 fi
 
-# Run n8n with insecure cookies
+# Run n8n with insecure cookies in detached mode
 echo "Running n8n..."
 sudo docker run -it --rm \
     --name n8n \
     -p 5678:5678 \
     -v n8n_data:/home/node/.n8n \
     -e N8N_SECURE_COOKIE=false \
+    -d \
     docker.n8n.io/n8nio/n8n
 
-echo "n8n has been stopped. Your data is preserved in the n8n_data volume."
-echo "To start n8n again, just run this script again."
+echo "n8n has been started in detached mode. Your data is preserved in the n8n_data volume."
+echo "The container will continue running in the background."
 echo "Access n8n at: http://localhost:5678 or http://your-server-ip:5678"
+echo ""
+echo "To check the container status, use: docker ps | grep n8n"
+echo "To stop the container, use: docker stop n8n"
+echo "To view container logs, use: docker logs n8n"
