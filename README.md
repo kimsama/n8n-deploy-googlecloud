@@ -153,6 +153,9 @@ netstat -tuln | grep :5678
 
 Feel free to open issues or submit pull requests for improvements.
 
+### References
+- [n8n Installation on Google Cloud Platform Guide](https://www.youtube.com/watch?v=kdt5J2bpchM&t=6s)
+
 ## License
 
 MIT License
