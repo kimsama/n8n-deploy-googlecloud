@@ -71,7 +71,7 @@ Configuration file:
 ```bash
 server {
 	listen 80;
-	server_name ???;
+	server_name ???; # your domain on here
 	location ~ ^/.* {
 		proxy_pass http://localhost:5678;
 		proxy_set_header Host $host;
