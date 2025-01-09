@@ -55,7 +55,60 @@ n8n will be available at:
 
 Your n8n data will be persisted in a Docker volume named `n8n_data`.
 
-### 3. Setup Dynamic DNS with ddclient
+### 3. Install NginX and Setup 
+
+Install nginx
+```bash
+sudo apt install nginx
+```
+
+Create configuration file
+```bash
+sudo nano /etc/nginx/sites-available/n8n
+```
+
+Configuration file:
+```bash
+server {
+	listen 80;
+	server_name ???;
+	location ~ ^/.* {
+		proxy_pass http://localhost:5678;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+		
+		chunked_transfer_encoding off;
+		proxy_buffering off;
+		proxy_cache off;
+	}
+}
+```
+
+Test and re-run nginx
+```bash
+sudo nginx -t
+sudo nginx
+```
+
+Stop nginx
+```bash
+sudo nginx -s stop
+```
+
+If you need to reload the configuration later:
+```bash
+sudo nginx -s reload
+```
+
+
+
+### 4. Setup Dynamic DNS with ddclient
 
 If you need to keep your domain pointed to your VM's dynamic IP address, you can use ddclient:
 
