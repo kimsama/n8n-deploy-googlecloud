@@ -1,4 +1,4 @@
-# n8n Deployment Guide for Google Cloud
+# n8n Deployment Guide to deploy VPC
 
 This repository contains scripts and instructions for deploying n8n on Google Cloud Platform using Docker.
 
